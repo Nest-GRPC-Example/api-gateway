@@ -1,4 +1,11 @@
-import { Body, Controller, Inject, Post, Put } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Inject,
+  OnModuleInit,
+  Post,
+  Put,
+} from '@nestjs/common';
 import { ClientGrpc } from '@nestjs/microservices';
 import { Observable } from 'rxjs';
 import {
@@ -11,7 +18,7 @@ import {
 } from './auth.pb';
 
 @Controller('auth')
-export class AuthController {
+export class AuthController implements OnModuleInit {
   private svc: AuthServiceClient;
   @Inject(AUTH_SERVICE_NAME)
   private readonly client: ClientGrpc;
