@@ -1,7 +1,7 @@
 import { Global, Module } from '@nestjs/common';
 import { ClientsModule, Transport } from '@nestjs/microservices';
 import { AuthController } from './auth.controller';
-import { AUTH_SERVICE_NAME } from './auth.pb';
+import { AUTH_PACKAGE_NAME, AUTH_SERVICE_NAME } from './auth.pb';
 import { AuthService } from './auth.service';
 
 @Global()
@@ -13,7 +13,7 @@ import { AuthService } from './auth.service';
         transport: Transport.GRPC,
         options: {
           url: '0.0.0.0:50051',
-          package: AUTH_SERVICE_NAME,
+          package: AUTH_PACKAGE_NAME,
           protoPath: 'node_modules/grpc-nest-proto/proto/auth.proto',
         },
       },
